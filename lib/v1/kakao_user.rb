@@ -74,7 +74,7 @@ class KakaoUser
     authorization = "KakaoAK #{admin_key}"
     params = { limit: limit, order: order }
     params[:from_id] = from_id if from_id.positive?
-l
+
     request_url = "#{HOST_KAPI}/v1/user/ids?#{params.map { |k, v| "#{k}=#{v}" } * '&'}"
     RestClient.get(request_url, Authorization: authorization)
   end
