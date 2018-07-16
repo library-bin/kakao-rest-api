@@ -2,6 +2,7 @@ require 'rest-client'
 require 'v1/kakao_user'
 require 'v1/api/story'
 require 'v1/api/talk'
+require 'kakao_rest_api/v2/client'
 
 class KakaoRestApi
   attr_accessor :app_key, :admin_key, :authorize_code, :redirect_uri
@@ -139,3 +140,4 @@ class KakaoRestApi
     Story.link_info access_token, url
   end
 end
+
