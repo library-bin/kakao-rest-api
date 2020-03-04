@@ -6,6 +6,6 @@ class Talk
     authorization = "Bearer #{access_token}"
     request_url = "#{HOST_KAPI}/v1/api/talk/profile"
     request_url.concat('&secure_resource=true') if secure_resource
-    RestClient.get(request_url, Authorization: authorization)
+    RestClientExt.get(request_url, Authorization: authorization)
   end
 end

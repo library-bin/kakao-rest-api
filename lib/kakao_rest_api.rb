@@ -1,4 +1,5 @@
 require 'rest-client'
+require 'rest_client_ext'
 require 'v1/kakao_user'
 require 'v1/api/story'
 require 'v1/api/talk'
@@ -37,7 +38,7 @@ class KakaoRestApi
       code: authorize_code
     }
     request_url = "#{HOST_KAUTH}/oauth/token"
-    RestClient.post(request_url, query_params)
+    RestClientExt.post(request_url, query_params)
   end
 
   def refresh_token(refresh_token)
@@ -47,7 +48,7 @@ class KakaoRestApi
       refresh_token: refresh_token
     }
     request_url = "#{HOST_KAUTH}/oauth/token"
-    RestClient.post(request_url, query_params)
+    RestClientExt.post(request_url, query_params)
   end
 
   def logout(access_token)

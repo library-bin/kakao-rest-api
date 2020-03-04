@@ -10,7 +10,7 @@ class Story
     authorization = "Bearer #{access_token}"
 
     request_url = "#{HOST_KAPI}/v1/api/story/isstoryuser"
-    RestClient.get(request_url, Authorization: authorization)
+    RestClientExt.get(request_url, Authorization: authorization)
   end
 
   def self.story_profile(access_token, secure_resource = false)
@@ -18,28 +18,28 @@ class Story
 
     request_url = "#{HOST_KAPI}/v1/api/story/profile"
     request_url.concat('?secure_resource=true') if secure_resource
-    RestClient.get(request_url, Authorization: authorization)
+    RestClientExt.get(request_url, Authorization: authorization)
   end
 
   def self.my_story(access_token, story_id)
     authorization = "Bearer #{access_token}"
 
     request_url = "#{HOST_KAPI}/v1/api/story/mystory?id=#{story_id}"
-    RestClient.get(request_url, Authorization: authorization)
+    RestClientExt.get(request_url, Authorization: authorization)
   end
 
   def self.my_stories(access_token, last_id)
     authorization = "Bearer #{access_token}"
 
     request_url = "#{HOST_KAPI}/v1/api/story/mystories?last_id=#{last_id}"
-    RestClient.get(request_url, Authorization: authorization)
+    RestClientExt.get(request_url, Authorization: authorization)
   end
 
   def self.delete_my_story(access_token, id)
     authorization = "Bearer #{access_token}"
 
     request_url = "#{HOST_KAPI}/v1/api/story/delete/mystory?id=#{id}"
-    RestClient.delete(request_url, Authorization: authorization)
+    RestClientExt.delete(request_url, Authorization: authorization)
   end
 
   def self.default_story_post_options
@@ -53,7 +53,7 @@ class Story
     authorization = "Bearer #{access_token}"
 
     request_url = "#{HOST_KAPI}/v1/api/story/linkinfo?url=#{url}"
-    RestClient.get(request_url, Authorization: authorization)
+    RestClientExt.get(request_url, Authorization: authorization)
   end
 
   def self.upload_multi(access_token, files)
@@ -65,7 +65,7 @@ class Story
       multipart: true
     }
     request_url = "#{HOST_KAPI}/v1/api/story/upload/multi"
-    RestClient.post(request_url, params, Authorization: authorization, content_type: content_type)
+    RestClientExt.post(request_url, params, Authorization: authorization, content_type: content_type)
   end
 
   def self.post_note(required_params, options)
@@ -78,7 +78,7 @@ class Story
     params.merge!(options)
 
     request_url = "#{HOST_KAPI}/v1/api/story/post/note"
-    RestClient.post(request_url, params, Authorization: authorization)
+    RestClientExt.post(request_url, params, Authorization: authorization)
   end
 
   def self.post_photo(required_params, options)
@@ -93,7 +93,7 @@ class Story
     params.merge!(options)
 
     request_url = "#{HOST_KAPI}/v1/api/story/post/photo"
-    RestClient.post(request_url, params, Authorization: authorization)
+    RestClientExt.post(request_url, params, Authorization: authorization)
   end
 
   def self.post_link(required_params, options)
@@ -108,6 +108,6 @@ class Story
     params.merge!(options)
 
     request_url = "#{HOST_KAPI}/v1/api/story/post/link"
-    RestClient.post(request_url, params, Authorization: authorization)
+    RestClientExt.post(request_url, params, Authorization: authorization)
   end
 end

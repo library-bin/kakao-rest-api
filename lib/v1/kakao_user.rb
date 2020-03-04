@@ -6,7 +6,7 @@ class KakaoUser
     authorization = "Bearer #{access_token}"
 
     request_url = "#{HOST_KAPI}/v1/user/logout"
-    RestClient.post(request_url, nil, Authorization: authorization)
+    RestClientExt.post(request_url, nil, Authorization: authorization)
   end
 
   def self.signup(access_token, properties = {})
@@ -17,14 +17,14 @@ class KakaoUser
     }
 
     request_url = "#{HOST_KAPI}/v1/user/signup"
-    RestClient.post(request_url, query_params, Authorization: authorization)
+    RestClientExt.post(request_url, query_params, Authorization: authorization)
   end
 
   def self.unlink(access_token)
     authorization = "Bearer #{access_token}"
 
     request_url = "#{HOST_KAPI}/v1/user/unlink"
-    RestClient.post(request_url, nil, Authorization: authorization)
+    RestClientExt.post(request_url, nil, Authorization: authorization)
   end
 
   # https://developers.kakao.com/docs/restapi/user-management#앱-연결-해제
@@ -33,7 +33,7 @@ class KakaoUser
 
     request_url = "#{HOST_KAPI}/v1/user/unlink"
     params = { target_id_type: 'user_id', target_id: user_id }
-    RestClient.post(request_url, params, Authorization: authorization)
+    RestClientExt.post(request_url, params, Authorization: authorization)
   end
 
   def self.me(access_token, property_keys = [], secure_resource = false)
@@ -44,7 +44,7 @@ class KakaoUser
     }
 
     request_url = "#{HOST_KAPI}/v1/user/me"
-    RestClient.post(request_url, params, Authorization: authorization)
+    RestClientExt.post(request_url, params, Authorization: authorization)
   end
 
   # https://developers.kakao.com/docs/restapi/user-management#사용자-정보-요청
@@ -58,7 +58,7 @@ class KakaoUser
     }
 
     request_url = "#{HOST_KAPI}/v1/user/me"
-    RestClient.post(request_url, params, Authorization: authorization)
+    RestClientExt.post(request_url, params, Authorization: authorization)
   end
 
   def self.update_profile(access_token, props = {})
@@ -67,7 +67,7 @@ class KakaoUser
       properties: props.to_json
     }
     request_url = "#{HOST_KAPI}/v1/user/update_profile"
-    RestClient.post(request_url, params, Authorization: authorization)
+    RestClientExt.post(request_url, params, Authorization: authorization)
   end
 
   def self.ids(admin_key, limit = 100, from_id = 0, order = 'asc')
@@ -76,13 +76,13 @@ class KakaoUser
     params[:from_id] = from_id if from_id.positive?
 
     request_url = "#{HOST_KAPI}/v1/user/ids?#{params.map { |k, v| "#{k}=#{v}" } * '&'}"
-    RestClient.get(request_url, Authorization: authorization)
+    RestClientExt.get(request_url, Authorization: authorization)
   end
 
   def self.access_token_info(access_token)
     authorization = "Bearer #{access_token}"
 
     request_url = "#{HOST_KAPI}/v1/user/access_token_info"
-    RestClient.get(request_url, Authorization: authorization)
+    RestClientExt.get(request_url, Authorization: authorization)
   end
 end

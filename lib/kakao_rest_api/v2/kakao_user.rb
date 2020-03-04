@@ -1,4 +1,5 @@
 require 'rest-client'
+require 'rest_client_ext'
 
 class KakaoRestApi
   module V2
@@ -14,7 +15,7 @@ class KakaoRestApi
         }
 
         request_url = "#{HOST_KAPI}/v2/user/me"
-        RestClient.post(request_url, params, Authorization: authorization)
+        RestClientExt.post(request_url, params, Authorization: authorization)
       end
 
       # https://developers.kakao.com/docs/restapi/user-management#사용자-정보-요청
@@ -28,7 +29,7 @@ class KakaoRestApi
         }
 
         request_url = "#{HOST_KAPI}/v2/user/me"
-        RestClient.post(request_url, params, Authorization: authorization)
+        RestClientExt.post(request_url, params, Authorization: authorization)
       end
     end
   end
