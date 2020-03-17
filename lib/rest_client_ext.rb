@@ -3,8 +3,8 @@ require 'rest-client'
 module RestClientExt
   include ::RestClient
 
-  READ_TIMEOUT = 10
-  OPEN_TIMEOUT = 10
+  READ_TIMEOUT = 5
+  OPEN_TIMEOUT = 5
 
   def self.get(url, headers = {}, &block)
     Request.execute(:method => :get, :url => url, :headers => headers, :read_timeout => READ_TIMEOUT, :open_timeout => OPEN_TIMEOUT, &block)
